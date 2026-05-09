@@ -1,0 +1,17 @@
+let
+    Source = Folder.Files("C:\Users\Administrator\Desktop\JOB_app\Data_Analyst\Project\Project_Performance_Data_SLZ\Tracker"),
+    ExcelFiles = Table.SelectRows(Source, each Text.EndsWith([Name], ".xlsx")),
+    AddFileDate = Table.AddColumn(ExcelFiles, "File Date", each
+        Date.FromText(
+            Text.BeforeDelimiter(
+                Text.AfterDelimiter([Name], "_", {0, RelativePosition.FromEnd}),
+                ".xlsx"
+            ),
+            [Format="yyyy-MM-dd"]
+        )
+    ),
+    SortNewest = Table.Sort(AddFileDate, {{"File Date", Order.Descending}}),
+    LatestFile = SortNewest{0}[Content],
+    ReadExcel = Excel.Workbook(LatestFile, null, true)
+in
+    ReadExcel
