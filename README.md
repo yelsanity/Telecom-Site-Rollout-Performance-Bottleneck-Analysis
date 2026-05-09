@@ -100,7 +100,7 @@ A single-page interactive dashboard built in Power BI covering the full SLZ Regi
 ## 🧹 Data Quality Notes
 
 - Date inconsistencies (negative durations, out-of-sequence dates) were identified and corrected during the cleaning phase
-- Sample data provided in this repo is **anonymized** — real site names, coordinates, and company references have been replaced with dummy values to protect confidentiality
+- Sample data provided in this repo is **anonymized** real site names, coordinates, and company references have been replaced with dummy values to protect confidentiality
 
 ---
 
